@@ -94,6 +94,12 @@ def predict():
     # Stocker la prédiction dans le cache pour vérification future
     prediction_cache[tweet_text] = result  # Stocker la prédiction pour ce tweet
 
+    app.logger.debug('This is a debug log message - predict')
+    app.logger.info('This is an information log message - predict')
+    app.logger.warn('This is a warning log message - predict')
+    app.logger.error('This is an error message - predict')
+    app.logger.critical('This is a critical message - predict')
+
     return jsonify({'prediction': result})
 
 @app.route('/feedback', methods=['POST'])
@@ -114,6 +120,12 @@ def feedback():
             print(f"Incorrect prediction")
     else:
         print(f'Erreur: aucune prédiction trouvée pour le tweet="{tweet_text}"')
+
+    app.logger.debug('This is a debug log message - feedback')
+    app.logger.info('This is an information log message - feedback')
+    app.logger.warn('This is a warning log message - feedback')
+    app.logger.error('This is an error message - feedback')
+    app.logger.critical('This is a critical message - feedback')
 
     return jsonify({'status': 'success', 'message': 'Feedback enregistré'})
 
